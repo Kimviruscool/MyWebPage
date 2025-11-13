@@ -1,10 +1,285 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Home Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #d4ccc4 0%, #b8afa8 100%);
+            min-height: 100vh;
+            padding: 40px;
+            position: relative;
+        }
+
+        .login-btn {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            background-color: #000;
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 1000;
+        }
+
+        .login-btn:hover {
+            background-color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 20px;
+        }
+
+        /* Calendar Section */
+        .calendar {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .calendar h2 {
+            font-size: 32px;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            text-align: center;
+        }
+
+        .day-header {
+            font-weight: bold;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .day {
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        .sunday {
+            color: #c45b5b;
+        }
+
+        .saturday {
+            color: #c45b5b;
+        }
+
+        .other-month {
+            color: #ccc;
+        }
+
+        /* Photo boxes */
+        .photo-box {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-large {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+            height: 280px;
+            background: linear-gradient(135deg, #e8d5c4 0%, #f5e6d3 100%);
+        }
+
+        .photo-collage {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+            height: 280px;
+            background: #d4c4b8;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 0;
+            padding: 0;
+        }
+
+        .photo-collage > div {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-collage img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-small {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+            height: 280px;
+            background: #e8ddd4;
+        }
+
+        /* Notes Section */
+        .notes {
+            background: rgba(180, 150, 130, 0.5);
+            padding: 30px;
+            padding-top: 50px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            grid-column: 3 / 4;
+            grid-row: 1 / 2;
+            position: relative;
+        }
+
+        .notes h2 {
+            font-size: 32px;
+            letter-spacing: 8px;
+            font-weight: normal;
+        }
+
+
+        /* Apps Section */
+        .apps {
+            background: rgba(180, 150, 130, 0.5);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            grid-column: 3 / 4;
+            grid-row: 2 / 3;
+        }
+
+        .apps h2 {
+            font-size: 32px;
+            letter-spacing: 8px;
+            font-weight: normal;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .calendar, .photo-large, .notes, .photo-collage, .photo-small, .apps {
+                grid-column: 1 / -1;
+                grid-row: auto;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Home Page</h1>
+    <button class="login-btn">로그인</button>
+    <div class="container">
+        <!-- Calendar -->
+        <div class="calendar">
+            <h2>JANUARY</h2>
+            <div class="calendar-grid">
+                <div class="day-header sunday">S</div>
+                <div class="day-header">M</div>
+                <div class="day-header">T</div>
+                <div class="day-header">W</div>
+                <div class="day-header">T</div>
+                <div class="day-header">F</div>
+                <div class="day-header saturday">S</div>
+
+                <div class="day sunday">1</div>
+                <div class="day">2</div>
+                <div class="day">3</div>
+                <div class="day">4</div>
+                <div class="day">5</div>
+                <div class="day">6</div>
+                <div class="day saturday">7</div>
+
+                <div class="day sunday">8</div>
+                <div class="day">9</div>
+                <div class="day">10</div>
+                <div class="day">11</div>
+                <div class="day">12</div>
+                <div class="day">13</div>
+                <div class="day saturday">14</div>
+
+                <div class="day sunday">15</div>
+                <div class="day">16</div>
+                <div class="day">17</div>
+                <div class="day">18</div>
+                <div class="day">19</div>
+                <div class="day">20</div>
+                <div class="day saturday">21</div>
+
+                <div class="day sunday">22</div>
+                <div class="day">23</div>
+                <div class="day">24</div>
+                <div class="day">25</div>
+                <div class="day">26</div>
+                <div class="day">27</div>
+                <div class="day saturday">28</div>
+
+                <div class="day sunday">29</div>
+                <div class="day">30</div>
+                <div class="day">31</div>
+                <div class="day other-month">1</div>
+                <div class="day other-month">2</div>
+                <div class="day other-month">3</div>
+                <div class="day other-month saturday">4</div>
+            </div>
+        </div>
+
+        <!-- Large Photo -->
+        <div class="photo-box photo-large">
+            <div style="width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(245, 230, 210, 0.8), rgba(255, 240, 220, 0.9)); display: flex; align-items: center; justify-content: center;">
+                <div style="text-align: center; color: #8b7355; opacity: 0.5;">Sky Image</div>
+            </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="notes">
+            <h2>MESSAGE</h2>
+        </div>
+
+        <!-- Photo Collage -->
+        <div class="photo-box photo-collage">
+            <div style="background: linear-gradient(135deg, #8b7355 0%, #a68a6d 100%);"></div>
+            <div style="background: linear-gradient(135deg, #d4b896 0%, #e8d5b7 100%);"></div>
+            <div style="background: linear-gradient(135deg, #e8d5b7 0%, #f5e6d3 100%);"></div>
+            <div style="background: linear-gradient(135deg, #6b8e7f 0%, #8ba896 100%);"></div>
+        </div>
+
+        <!-- Small Photo -->
+        <div class="photo-box photo-small">
+            <div style="width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(230, 220, 210, 0.9), rgba(240, 230, 220, 0.95)); display: flex; align-items: center; justify-content: center;">
+                <div style="text-align: center; color: #8b7355; opacity: 0.5;">Flower Image</div>
+            </div>
+        </div>
+
+        <!-- Apps -->
+        <div class="apps">
+            <h2>MYCOMMITS</h2>
+        </div>
+    </div>
 </body>
 </html>
