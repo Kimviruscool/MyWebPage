@@ -13,30 +13,10 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #d4ccc4 0%, #b8afa8 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             min-height: 100vh;
             padding: 40px;
             position: relative;
-        }
-
-        .login-btn {
-            position: fixed;
-            top: 40px;
-            right: 40px;
-            background-color: #000;
-            color: #fff;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            z-index: 1000;
-        }
-
-        .login-btn:hover {
-            background-color: #333;
         }
 
         .container {
@@ -50,10 +30,11 @@
 
         /* Calendar Section */
         .calendar {
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(40, 40, 40, 0.8);
             padding: 30px;
             border-radius: 20px;
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .calendar h2 {
@@ -61,6 +42,7 @@
             letter-spacing: 8px;
             margin-bottom: 20px;
             font-weight: normal;
+            color: #e0e0e0;
         }
 
         .calendar-grid {
@@ -74,23 +56,25 @@
             font-weight: bold;
             padding: 8px;
             font-size: 14px;
+            color: #b0b0b0;
         }
 
         .day {
             padding: 8px;
             font-size: 16px;
+            color: #d0d0d0;
         }
 
         .sunday {
-            color: #c45b5b;
+            color: #ff6b6b;
         }
 
         .saturday {
-            color: #c45b5b;
+            color: #ff6b6b;
         }
 
         .other-month {
-            color: #ccc;
+            color: #555;
         }
 
         /* Photo boxes */
@@ -98,6 +82,7 @@
             border-radius: 20px;
             overflow: hidden;
             position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .photo-box img {
@@ -111,18 +96,18 @@
             grid-column: 2 / 3;
             grid-row: 1 / 2;
             height: 280px;
-            background: linear-gradient(135deg, #e8d5c4 0%, #f5e6d3 100%);
+            background: #1a1a1a;
         }
 
         .photo-collage {
             grid-column: 1 / 2;
             grid-row: 2 / 3;
             height: 280px;
-            background: #d4c4b8;
+            background: #1a1a1a;
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr 1fr;
-            gap: 0;
+            gap: 2px;
             padding: 0;
         }
 
@@ -141,42 +126,125 @@
             grid-column: 2 / 3;
             grid-row: 2 / 3;
             height: 280px;
-            background: #e8ddd4;
+            background: #1a1a1a;
         }
 
         /* Notes Section */
         .notes {
-            background: rgba(180, 150, 130, 0.5);
+            background: rgba(40, 40, 40, 0.8);
             padding: 30px;
-            padding-top: 50px;
             border-radius: 20px;
             backdrop-filter: blur(10px);
             grid-column: 3 / 4;
             grid-row: 1 / 2;
             position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .notes h2 {
             font-size: 32px;
             letter-spacing: 8px;
             font-weight: normal;
+            color: #e0e0e0;
+            margin-bottom: 20px;
         }
 
+        .message-display {
+            flex: 1;
+            background: rgba(30, 30, 30, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            overflow-y: auto;
+            max-height: 150px;
+            min-height: 100px;
+        }
+
+        .message-item {
+            color: #c0c0c0;
+            font-size: 13px;
+            margin-bottom: 8px;
+            padding: 8px;
+            background: rgba(50, 50, 50, 0.4);
+            border-radius: 8px;
+        }
+
+        .message-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: calc(100% - 60px);
+        }
+
+        .message-container {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .message-input {
+            flex: 1;
+            padding: 12px 15px;
+            background: rgba(60, 60, 60, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: #e0e0e0;
+            font-size: 14px;
+            font-family: 'Arial', sans-serif;
+            resize: none;
+            height: 45px;
+        }
+
+        .message-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(70, 70, 70, 0.6);
+        }
+
+        .message-input::placeholder {
+            color: #888;
+        }
+
+        .send-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #444 0%, #333 100%);
+            color: #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            height: 45px;
+        }
+
+        .send-btn:hover {
+            background: linear-gradient(135deg, #555 0%, #444 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .send-btn:active {
+            transform: scale(0.98);
+        }
 
         /* Apps Section */
         .apps {
-            background: rgba(180, 150, 130, 0.5);
+            background: rgba(40, 40, 40, 0.8);
             padding: 30px;
             border-radius: 20px;
             backdrop-filter: blur(10px);
             grid-column: 3 / 4;
             grid-row: 2 / 3;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .apps h2 {
             font-size: 32px;
             letter-spacing: 8px;
             font-weight: normal;
+            color: #e0e0e0;
         }
 
         @media (max-width: 1024px) {
@@ -193,7 +261,6 @@
     </style>
 </head>
 <body>
-    <button class="login-btn">로그인</button>
     <div class="container">
         <!-- Calendar -->
         <div class="calendar">
@@ -251,29 +318,37 @@
 
         <!-- Large Photo -->
         <div class="photo-box photo-large">
-            <div style="width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(245, 230, 210, 0.8), rgba(255, 240, 220, 0.9)); display: flex; align-items: center; justify-content: center;">
-                <div style="text-align: center; color: #8b7355; opacity: 0.5;">Sky Image</div>
-            </div>
+            <img src="https://images.unsplash.com/photo-1529778873920-4da4926a72c2?w=800&h=400&fit=crop" alt="Black Cat">
         </div>
 
         <!-- Notes -->
         <div class="notes">
             <h2>MESSAGE</h2>
+            <div class="message-container">
+                <input type="text" class="message-input" placeholder="메시지를 입력하세요...">
+                <button class="send-btn">Send</button>
+            </div>
         </div>
 
         <!-- Photo Collage -->
         <div class="photo-box photo-collage">
-            <div style="background: linear-gradient(135deg, #8b7355 0%, #a68a6d 100%);"></div>
-            <div style="background: linear-gradient(135deg, #d4b896 0%, #e8d5b7 100%);"></div>
-            <div style="background: linear-gradient(135deg, #e8d5b7 0%, #f5e6d3 100%);"></div>
-            <div style="background: linear-gradient(135deg, #6b8e7f 0%, #8ba896 100%);"></div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=400&h=400&fit=crop" alt="Black Cat 1">
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=400&h=400&fit=crop" alt="Black Cat 2">
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1561948955-570b270e7c36?w=400&h=400&fit=crop" alt="Black Cat 3">
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1503431128871-cd250803fa41?w=400&h=400&fit=crop" alt="Black Cat 4">
+            </div>
         </div>
 
         <!-- Small Photo -->
         <div class="photo-box photo-small">
-            <div style="width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(230, 220, 210, 0.9), rgba(240, 230, 220, 0.95)); display: flex; align-items: center; justify-content: center;">
-                <div style="text-align: center; color: #8b7355; opacity: 0.5;">Flower Image</div>
-            </div>
+            <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=800&h=400&fit=crop" alt="Black Cat">
         </div>
 
         <!-- Apps -->
