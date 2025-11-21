@@ -1,0 +1,583 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1a1a;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    background: white;
+    padding: 15px 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.admin-status-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #f8f9fa;
+    border-radius: 20px;
+}
+
+.status-dot-header {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #28a745;
+    box-shadow: 0 0 8px #28a745;
+}
+
+.status-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #155724;
+}
+
+.header-nav {
+    display: flex;
+    gap: 25px;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+.header-nav a:hover {
+    color: #667eea;
+}
+
+.auth-btn {
+    padding: 8px 20px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.auth-btn:hover {
+    background: #5568d3;
+    transform: translateY(-1px);
+}
+
+.auth-btn.logout {
+    background: #dc3545;
+}
+
+.auth-btn.logout:hover {
+    background: #c82333;
+}
+
+.main-wrapper {
+    padding: 0 20px 20px 20px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: calc(100vh - 120px);
+    position: relative;
+}
+
+.box {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.box h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 10px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.box h2:hover {
+    color: #667eea;
+}
+
+/* Admin Status - 제거 */
+.admin-status {
+    display: none;
+}
+
+/* Calendar */
+.calendar {
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.day-header {
+    text-align: center;
+    font-weight: bold;
+    padding: 8px;
+    color: #667eea;
+}
+
+.day {
+    text-align: center;
+    padding: 12px 8px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.day:hover {
+    background: #667eea;
+    color: white;
+}
+
+.day.selected {
+    background: #667eea;
+    color: white;
+}
+
+.day.has-event::after {
+    content: '•';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #e74c3c;
+    font-size: 18px;
+}
+
+.sunday { color: #e74c3c; }
+.saturday { color: #3498db; }
+.other-month { opacity: 0.3; }
+
+.schedule-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid #e9ecef;
+    padding-top: 15px;
+}
+
+.schedule-header {
+    font-size: 14px;
+    font-weight: 600;
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.schedule-list {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.schedule-item {
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #333;
+    border-left: 3px solid #667eea;
+}
+
+.schedule-time {
+    font-weight: 600;
+    color: #667eea;
+    margin-bottom: 3px;
+}
+
+.schedule-empty {
+    padding: 20px;
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+}
+
+/* Weather */
+.weather {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.weather-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.weather-label {
+    font-weight: 600;
+    color: #555;
+}
+
+.weather-value {
+    color: #667eea;
+    font-weight: 600;
+}
+
+/* Photo */
+.photo {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    padding: 0;
+    overflow: hidden;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Popular Stocks */
+.stocks {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    position: relative;
+    overflow: hidden;
+}
+
+.stock-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    position: relative;
+    min-height: 80px;
+}
+
+.stock-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: all 0.5s ease;
+    position: absolute;
+    width: calc(100% - 40px);
+    opacity: 0;
+}
+
+.stock-item.active {
+    opacity: 1;
+    position: relative;
+}
+
+.stock-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.stock-price {
+    font-size: 14px;
+    color: #555;
+}
+
+.stock-change {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.positive {
+    background: #d4edda;
+    color: #155724;
+}
+
+.negative {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Popular Coins */
+.coins {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+    position: relative;
+    overflow: hidden;
+}
+
+.coin-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    position: relative;
+    min-height: 80px;
+}
+
+.coin-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: all 0.5s ease;
+    position: absolute;
+    width: calc(100% - 40px);
+    opacity: 0;
+}
+
+.coin-item.active {
+    opacity: 1;
+    position: relative;
+}
+
+.coin-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.coin-price {
+    font-size: 14px;
+    color: #555;
+}
+
+.coin-change {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.nav-arrows {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.nav-arrow {
+    background: #667eea;
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.nav-arrow:hover {
+    background: #5568d3;
+    transform: scale(1.1);
+}
+
+/* Guestbook */
+.guestbook {
+    grid-column: 4 / 5;
+    grid-row: 1 / 4;
+}
+
+.guestbook-display {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.guestbook-item {
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #333;
+    border-left: 3px solid #667eea;
+}
+
+.guestbook-item-name {
+    font-weight: 600;
+    color: #667eea;
+    margin-bottom: 5px;
+}
+
+.guestbook-item-content {
+    margin-bottom: 5px;
+}
+
+.guestbook-item-meta {
+    font-size: 11px;
+    color: #999;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.guestbook-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.guestbook-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.guestbook-input:focus {
+    border-color: #667eea;
+}
+
+.guestbook-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+    resize: vertical;
+    min-height: 60px;
+    font-family: inherit;
+}
+
+.guestbook-textarea:focus {
+    border-color: #667eea;
+}
+
+.guestbook-checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.guestbook-checkbox {
+    cursor: pointer;
+}
+
+.send-btn {
+    padding: 10px 20px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.send-btn:hover {
+    background: #5568d3;
+}
+
+/* Commits Table */
+.commits {
+    grid-column: 2 / 4;
+    grid-row: 3 / 4;
+}
+
+.commit-table {
+    width: 100%;
+    border-collapse: collapse;
+    flex: 1;
+    overflow-y: auto;
+    display: block;
+}
+
+.commit-table thead {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.commit-table tbody {
+    display: block;
+    overflow-y: auto;
+    max-height: calc(100% - 40px);
+}
+
+.commit-table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.commit-table th {
+    background: #667eea;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.commit-table td {
+    padding: 10px;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 13px;
+    color: #333;
+}
+
+.commit-table tr:hover {
+    background: #f8f9fa;
+}
