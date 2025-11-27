@@ -1,10 +1,225 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주식</title>
+    <link rel="stylesheet" href="/static/stocks.css">
 </head>
 <body>
-    <h4>stocks</h4>
+    <div class="header">
+        <div class="header-left">
+            <div class="admin-status-header">
+                <span class="status-dot-header"></span>
+                <span class="status-text">온라인</span>
+            </div>
+            <nav class="header-nav">
+                <a href="/">홈</a>
+                <a href="/calendar">캘린더</a>
+                <a href="/stocks">주식</a>
+                <a href="/coins">코인</a>
+                <a href="/guestbook">방명록</a>
+                <a href="/commits">커밋</a>
+                <a href="/record">기록</a>
+            </nav>
+        </div>
+        <button class="auth-btn" id="authBtn" onclick="toggleAuth()">로그인</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="stocks-container">
+            <div class="stocks-header">
+                <h1>주식 시장</h1>
+                <div class="market-status">
+                    <span class="status-indicator"></span>
+                    <span>시장 개장</span>
+                </div>
+            </div>
+
+            <div class="stocks-grid">
+                <div class="stock-card">
+                    <div class="stock-card-header">
+                        <h3>삼성전자</h3>
+                        <span class="stock-code">005930</span>
+                    </div>
+                    <div class="stock-price-large">71,500원</div>
+                    <div class="stock-change positive">
+                        <span class="change-value">+1,600원</span>
+                        <span class="change-percent">+2.3%</span>
+                    </div>
+                    <div class="stock-info">
+                        <div class="info-item">
+                            <span class="info-label">시가</span>
+                            <span class="info-value">70,200원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">고가</span>
+                            <span class="info-value">72,100원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">저가</span>
+                            <span class="info-value">69,800원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">거래량</span>
+                            <span class="info-value">12.5M</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stock-card">
+                    <div class="stock-card-header">
+                        <h3>SK하이닉스</h3>
+                        <span class="stock-code">000660</span>
+                    </div>
+                    <div class="stock-price-large">168,000원</div>
+                    <div class="stock-change positive">
+                        <span class="change-value">+6,600원</span>
+                        <span class="change-percent">+4.1%</span>
+                    </div>
+                    <div class="stock-info">
+                        <div class="info-item">
+                            <span class="info-label">시가</span>
+                            <span class="info-value">163,000원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">고가</span>
+                            <span class="info-value">169,500원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">저가</span>
+                            <span class="info-value">162,500원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">거래량</span>
+                            <span class="info-value">8.2M</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stock-card">
+                    <div class="stock-card-header">
+                        <h3>NAVER</h3>
+                        <span class="stock-code">035420</span>
+                    </div>
+                    <div class="stock-price-large">195,500원</div>
+                    <div class="stock-change negative">
+                        <span class="change-value">-2,300원</span>
+                        <span class="change-percent">-1.2%</span>
+                    </div>
+                    <div class="stock-info">
+                        <div class="info-item">
+                            <span class="info-label">시가</span>
+                            <span class="info-value">197,000원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">고가</span>
+                            <span class="info-value">198,500원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">저가</span>
+                            <span class="info-value">194,200원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">거래량</span>
+                            <span class="info-value">3.1M</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stock-card">
+                    <div class="stock-card-header">
+                        <h3>카카오</h3>
+                        <span class="stock-code">035720</span>
+                    </div>
+                    <div class="stock-price-large">48,200원</div>
+                    <div class="stock-change positive">
+                        <span class="change-value">+1,650원</span>
+                        <span class="change-percent">+3.5%</span>
+                    </div>
+                    <div class="stock-info">
+                        <div class="info-item">
+                            <span class="info-label">시가</span>
+                            <span class="info-value">47,000원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">고가</span>
+                            <span class="info-value">48,800원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">저가</span>
+                            <span class="info-value">46,900원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">거래량</span>
+                            <span class="info-value">5.7M</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stock-card">
+                    <div class="stock-card-header">
+                        <h3>현대차</h3>
+                        <span class="stock-code">005380</span>
+                    </div>
+                    <div class="stock-price-large">224,000원</div>
+                    <div class="stock-change negative">
+                        <span class="change-value">-1,800원</span>
+                        <span class="change-percent">-0.8%</span>
+                    </div>
+                    <div class="stock-info">
+                        <div class="info-item">
+                            <span class="info-label">시가</span>
+                            <span class="info-value">225,500원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">고가</span>
+                            <span class="info-value">227,000원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">저가</span>
+                            <span class="info-value">223,000원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">거래량</span>
+                            <span class="info-value">2.3M</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stock-card">
+                    <div class="stock-card-header">
+                        <h3>LG에너지솔루션</h3>
+                        <span class="stock-code">373220</span>
+                    </div>
+                    <div class="stock-price-large">412,500원</div>
+                    <div class="stock-change positive">
+                        <span class="change-value">+8,500원</span>
+                        <span class="change-percent">+2.1%</span>
+                    </div>
+                    <div class="stock-info">
+                        <div class="info-item">
+                            <span class="info-label">시가</span>
+                            <span class="info-value">405,000원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">고가</span>
+                            <span class="info-value">415,000원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">저가</span>
+                            <span class="info-value">404,000원</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">거래량</span>
+                            <span class="info-value">1.8M</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/stocks.js"></script>
 </body>
 </html>

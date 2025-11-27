@@ -1,10 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캘린더</title>
+    <link rel="stylesheet" href="/static/calendar.css">
 </head>
 <body>
-    <h4>calendar</h4>
+    <div class="header">
+        <div class="header-left">
+            <div class="admin-status-header">
+                <span class="status-dot-header"></span>
+                <span class="status-text">온라인</span>
+            </div>
+            <nav class="header-nav">
+                <a href="/">홈</a>
+                <a href="/calendar">캘린더</a>
+                <a href="/stocks">주식</a>
+                <a href="/coins">코인</a>
+                <a href="/guestbook">방명록</a>
+                <a href="/commits">커밋</a>
+                <a href="/record">기록</a>
+            </nav>
+        </div>
+        <button class="auth-btn" id="authBtn" onclick="toggleAuth()">로그인</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <button class="month-nav" onclick="prevMonth()">◀</button>
+                <h1 id="currentMonth">JANUARY 2025</h1>
+                <button class="month-nav" onclick="nextMonth()">▶</button>
+            </div>
+
+            <div class="calendar-main">
+                <div class="calendar-grid">
+                    <div class="day-header sunday">일</div>
+                    <div class="day-header">월</div>
+                    <div class="day-header">화</div>
+                    <div class="day-header">수</div>
+                    <div class="day-header">목</div>
+                    <div class="day-header">금</div>
+                    <div class="day-header saturday">토</div>
+
+                    <!-- 날짜들이 JavaScript로 동적 생성됨 -->
+                    <div id="calendarDays"></div>
+                </div>
+
+                <div class="schedule-panel">
+                    <div class="schedule-panel-header">
+                        <h2 id="selectedDate">날짜를 선택하세요</h2>
+                        <button class="add-schedule-btn" onclick="showAddScheduleForm()">+ 일정 추가</button>
+                    </div>
+
+                    <div class="add-schedule-form" id="addScheduleForm" style="display: none;">
+                        <input type="time" id="scheduleTime" class="schedule-input">
+                        <input type="text" id="scheduleTitle" class="schedule-input" placeholder="일정 제목">
+                        <div class="form-buttons">
+                            <button class="save-btn" onclick="saveSchedule()">저장</button>
+                            <button class="cancel-btn" onclick="hideAddScheduleForm()">취소</button>
+                        </div>
+                    </div>
+
+                    <div class="schedule-list" id="scheduleList">
+                        <div class="schedule-empty">날짜를 선택하세요</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/calendar.js"></script>
 </body>
 </html>

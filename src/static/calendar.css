@@ -1,0 +1,342 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1a1a;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Header - home.css와 동일 */
+.header {
+    background: white;
+    padding: 15px 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.admin-status-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #f8f9fa;
+    border-radius: 20px;
+}
+
+.status-dot-header {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #28a745;
+    box-shadow: 0 0 8px #28a745;
+}
+
+.status-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #155724;
+}
+
+.header-nav {
+    display: flex;
+    gap: 25px;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+.header-nav a:hover {
+    color: #667eea;
+}
+
+.auth-btn {
+    padding: 8px 20px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.auth-btn:hover {
+    background: #5568d3;
+    transform: translateY(-1px);
+}
+
+.auth-btn.logout {
+    background: #dc3545;
+}
+
+.auth-btn.logout:hover {
+    background: #c82333;
+}
+
+/* Main Content */
+.main-wrapper {
+    padding: 0 40px 40px 40px;
+}
+
+.calendar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #667eea;
+}
+
+.calendar-header h1 {
+    font-size: 28px;
+    color: #333;
+    font-weight: 600;
+}
+
+.month-nav {
+    background: #667eea;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.2s;
+}
+
+.month-nav:hover {
+    background: #5568d3;
+    transform: scale(1.1);
+}
+
+.calendar-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.day-header {
+    text-align: center;
+    font-weight: bold;
+    padding: 15px;
+    color: #667eea;
+    font-size: 16px;
+}
+
+.day {
+    text-align: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.day:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.day.selected {
+    background: #667eea;
+    color: white;
+    font-weight: 600;
+}
+
+.day.has-event::after {
+    content: '•';
+    position: absolute;
+    bottom: 8px;
+    color: #e74c3c;
+    font-size: 20px;
+}
+
+.day.has-event.selected::after {
+    color: white;
+}
+
+.sunday { color: #e74c3c; }
+.saturday { color: #3498db; }
+.other-month { opacity: 0.3; }
+
+.schedule-panel {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    max-height: 600px;
+}
+
+.schedule-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #667eea;
+}
+
+.schedule-panel-header h2 {
+    font-size: 18px;
+    color: #333;
+}
+
+.add-schedule-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.add-schedule-btn:hover {
+    background: #5568d3;
+}
+
+.add-schedule-form {
+    margin-bottom: 15px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.schedule-input {
+    padding: 10px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.schedule-input:focus {
+    border-color: #667eea;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.save-btn, .cancel-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.save-btn {
+    background: #667eea;
+    color: white;
+}
+
+.save-btn:hover {
+    background: #5568d3;
+}
+
+.cancel-btn {
+    background: #e9ecef;
+    color: #333;
+}
+
+.cancel-btn:hover {
+    background: #dee2e6;
+}
+
+.schedule-list {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.schedule-item {
+    padding: 12px;
+    background: white;
+    border-radius: 8px;
+    border-left: 3px solid #667eea;
+}
+
+.schedule-time {
+    font-weight: 600;
+    color: #667eea;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.schedule-title {
+    color: #333;
+    font-size: 14px;
+}
+
+.schedule-empty {
+    padding: 40px 20px;
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+}
+
+@media (max-width: 1200px) {
+    .calendar-main {
+        grid-template-columns: 1fr;
+    }
+
+    .schedule-panel {
+        max-height: 400px;
+    }
+}

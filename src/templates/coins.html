@@ -1,10 +1,261 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>코인</title>
+    <link rel="stylesheet" href="/static/coins.css">
 </head>
 <body>
-    <h4>coins</h4>
+    <div class="header">
+        <div class="header-left">
+            <div class="admin-status-header">
+                <span class="status-dot-header"></span>
+                <span class="status-text">온라인</span>
+            </div>
+            <nav class="header-nav">
+                <a href="/">홈</a>
+                <a href="/calendar">캘린더</a>
+                <a href="/stocks">주식</a>
+                <a href="/coins">코인</a>
+                <a href="/guestbook">방명록</a>
+                <a href="/commits">커밋</a>
+                <a href="/record">기록</a>
+            </nav>
+        </div>
+        <button class="auth-btn" id="authBtn" onclick="toggleAuth()">로그인</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="coins-container">
+            <div class="coins-header">
+                <h1>암호화폐 시장</h1>
+                <div class="market-status">
+                    <span class="status-indicator"></span>
+                    <span>24시간 거래</span>
+                </div>
+            </div>
+
+            <div class="coins-grid">
+                <div class="coin-card">
+                    <div class="coin-card-header">
+                        <div class="coin-title">
+                            <span class="coin-icon">₿</span>
+                            <div>
+                                <h3>Bitcoin</h3>
+                                <span class="coin-symbol">BTC</span>
+                            </div>
+                        </div>
+                        <span class="coin-rank">#1</span>
+                    </div>
+                    <div class="coin-price-large">$95,234</div>
+                    <div class="coin-change positive">
+                        <span class="change-value">+5,124</span>
+                        <span class="change-percent">+5.7%</span>
+                    </div>
+                    <div class="coin-info">
+                        <div class="info-item">
+                            <span class="info-label">시가총액</span>
+                            <span class="info-value">$1.87T</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 거래량</span>
+                            <span class="info-value">$48.2B</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 고가</span>
+                            <span class="info-value">$96,150</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 저가</span>
+                            <span class="info-value">$89,420</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="coin-card">
+                    <div class="coin-card-header">
+                        <div class="coin-title">
+                            <span class="coin-icon">Ξ</span>
+                            <div>
+                                <h3>Ethereum</h3>
+                                <span class="coin-symbol">ETH</span>
+                            </div>
+                        </div>
+                        <span class="coin-rank">#2</span>
+                    </div>
+                    <div class="coin-price-large">$3,456</div>
+                    <div class="coin-change positive">
+                        <span class="change-value">+107</span>
+                        <span class="change-percent">+3.2%</span>
+                    </div>
+                    <div class="coin-info">
+                        <div class="info-item">
+                            <span class="info-label">시가총액</span>
+                            <span class="info-value">$415.3B</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 거래량</span>
+                            <span class="info-value">$23.1B</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 고가</span>
+                            <span class="info-value">$3,521</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 저가</span>
+                            <span class="info-value">$3,342</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="coin-card">
+                    <div class="coin-card-header">
+                        <div class="coin-title">
+                            <span class="coin-icon">✕</span>
+                            <div>
+                                <h3>Ripple</h3>
+                                <span class="coin-symbol">XRP</span>
+                            </div>
+                        </div>
+                        <span class="coin-rank">#3</span>
+                    </div>
+                    <div class="coin-price-large">$1.42</div>
+                    <div class="coin-change negative">
+                        <span class="change-value">-0.03</span>
+                        <span class="change-percent">-2.1%</span>
+                    </div>
+                    <div class="coin-info">
+                        <div class="info-item">
+                            <span class="info-label">시가총액</span>
+                            <span class="info-value">$81.2B</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 거래량</span>
+                            <span class="info-value">$5.7B</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 고가</span>
+                            <span class="info-value">$1.48</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 저가</span>
+                            <span class="info-value">$1.38</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="coin-card">
+                    <div class="coin-card-header">
+                        <div class="coin-title">
+                            <span class="coin-icon">₳</span>
+                            <div>
+                                <h3>Cardano</h3>
+                                <span class="coin-symbol">ADA</span>
+                            </div>
+                        </div>
+                        <span class="coin-rank">#4</span>
+                    </div>
+                    <div class="coin-price-large">$1.08</div>
+                    <div class="coin-change positive">
+                        <span class="change-value">+0.06</span>
+                        <span class="change-percent">+6.3%</span>
+                    </div>
+                    <div class="coin-info">
+                        <div class="info-item">
+                            <span class="info-label">시가총액</span>
+                            <span class="info-value">$38.5B</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 거래량</span>
+                            <span class="info-value">$2.8B</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 고가</span>
+                            <span class="info-value">$1.12</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 저가</span>
+                            <span class="info-value">$1.01</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="coin-card">
+                    <div class="coin-card-header">
+                        <div class="coin-title">
+                            <span class="coin-icon">◎</span>
+                            <div>
+                                <h3>Solana</h3>
+                                <span class="coin-symbol">SOL</span>
+                            </div>
+                        </div>
+                        <span class="coin-rank">#5</span>
+                    </div>
+                    <div class="coin-price-large">$238.45</div>
+                    <div class="coin-change positive">
+                        <span class="change-value">+19.52</span>
+                        <span class="change-percent">+8.9%</span>
+                    </div>
+                    <div class="coin-info">
+                        <div class="info-item">
+                            <span class="info-label">시가총액</span>
+                            <span class="info-value">$115.8B</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 거래량</span>
+                            <span class="info-value">$7.2B</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 고가</span>
+                            <span class="info-value">$242.15</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 저가</span>
+                            <span class="info-value">$218.30</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="coin-card">
+                    <div class="coin-card-header">
+                        <div class="coin-title">
+                            <span class="coin-icon">Ð</span>
+                            <div>
+                                <h3>Dogecoin</h3>
+                                <span class="coin-symbol">DOGE</span>
+                            </div>
+                        </div>
+                        <span class="coin-rank">#6</span>
+                    </div>
+                    <div class="coin-price-large">$0.32</div>
+                    <div class="coin-change positive">
+                        <span class="change-value">+0.01</span>
+                        <span class="change-percent">+4.2%</span>
+                    </div>
+                    <div class="coin-info">
+                        <div class="info-item">
+                            <span class="info-label">시가총액</span>
+                            <span class="info-value">$47.2B</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 거래량</span>
+                            <span class="info-value">$3.5B</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 고가</span>
+                            <span class="info-value">$0.33</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">24h 저가</span>
+                            <span class="info-value">$0.30</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/coins.js"></script>
 </body>
 </html>

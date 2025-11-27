@@ -1,10 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커밋</title>
+    <link rel="stylesheet" href="/static/commits.css">
 </head>
 <body>
-    <h4>commits</h4>
+    <div class="header">
+        <div class="header-left">
+            <div class="admin-status-header">
+                <span class="status-dot-header"></span>
+                <span class="status-text">온라인</span>
+            </div>
+            <nav class="header-nav">
+                <a href="/">홈</a>
+                <a href="/calendar">캘린더</a>
+                <a href="/stocks">주식</a>
+                <a href="/coins">코인</a>
+                <a href="/guestbook">방명록</a>
+                <a href="/commits">커밋</a>
+                <a href="/record">기록</a>
+            </nav>
+        </div>
+        <button class="auth-btn" id="authBtn" onclick="toggleAuth()">로그인</button>
+    </div>
+
+    <div class="main-wrapper">
+        <div class="commits-container">
+            <div class="commits-header">
+                <h1>Git 커밋 히스토리</h1>
+                <div class="commit-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">247</span>
+                        <span class="stat-label">총 커밋</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">15</span>
+                        <span class="stat-label">이번 주</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">오늘</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="commits-content">
+                <div class="filter-section">
+                    <button class="filter-btn active" onclick="filterCommits('all')">전체</button>
+                    <button class="filter-btn" onclick="filterCommits('feat')">기능</button>
+                    <button class="filter-btn" onclick="filterCommits('fix')">버그수정</button>
+                    <button class="filter-btn" onclick="filterCommits('refactor')">리팩토링</button>
+                    <button class="filter-btn" onclick="filterCommits('docs')">문서</button>
+                </div>
+
+                <div class="commits-list">
+                    <div class="commit-item" data-type="feat">
+                        <div class="commit-icon feat">
+                            <span>✨</span>
+                        </div>
+                        <div class="commit-details">
+                            <div class="commit-message">feat: 사용자 인증 기능 추가</div>
+                            <div class="commit-meta">
+                                <span class="commit-author">홍길동</span>
+                                <span class="commit-date">2025-01-15 14:23</span>
+                                <span class="commit-hash">#a7b3c2d</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="commit-item" data-type="fix">
+                        <div class="commit-icon fix">
+                            <span>🐛</span>
+                        </div>
+                        <div class="commit-details">
+                            <div class="commit-message">fix: 로그인 버그 수정</div>
+                            <div class="commit-meta">
+                                <span class="commit-author">김철수</span>
+                                <span class="commit-date">2025-01-15 11:45</span>
+                                <span class="commit-hash">#b8c4d3e</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="commit-item" data-type="refactor">
+                        <div class="commit-icon refactor">
+                            <span>♻️</span>
+                        </div>
+                        <div class="commit-details">
+                            <div class="commit-message">refactor: 코드 구조 개선</div>
+                            <div class="commit-meta">
+                                <span class="commit-author">이영희</span>
+                                <span class="commit-date">2025-01-14 16:30</span>
+                                <span class="commit-hash">#c9d5e4f</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="commit-item" data-type="docs">
+                        <div class="commit-icon docs">
+                            <span>📝</span>
+                        </div>
+                        <div class="commit-details">
+                            <div class="commit-message">docs: README 문서 업데이트</div>
+                            <div class="commit-meta">
+                                <span class="commit-author">박민수</span>
+                                <span class="commit-date">2025-01-14 09:15</span>
+                                <span class="commit-hash">#d0e6f5a</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="commit-item" data-type="style">
+                        <div class="commit-icon style">
+                            <span>💄</span>
+                        </div>
+                        <div class="commit-details">
+                            <div class="commit-message">style: CSS 스타일 수정</div>
+                            <div class="commit-meta">
+                                <span class="commit-author">정수진</span>
+                                <span class="commit-date">2025-01-13 18:50</span>
+                                <span class="commit-hash">#e1f7a6b</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="commit-item" data-type="feat">
+                        <div class="commit-icon feat">
+                            <span>✨</span>
+                        </div>
+                        <div class="commit-details">
+                            <div class="commit-message">feat: 다크모드 기능 구현</div>
+                            <div class="commit-meta">
+                                <span class="commit-author">최동욱</span>
+                                <span class="commit-date">2025-01-13 15:20</span>
+                                <span class="commit-hash">#f2a8b7c</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="commit-item" data-type="fix">
+                        <div class="commit-icon fix">
+                            <span>🐛</span>
+                        </div>
+                        <div class="commit-details">
+                            <div class="commit-message">fix: 메모리 누수 문제 해결</div>
+                            <div class="commit-meta">
+                                <span class="commit-author">강민지</span>
+                                <span class="commit-date">2025-01-12 13:40</span>
+                                <span class="commit-hash">#a3b9c8d</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="commit-item" data-type="feat">
+                        <div class="commit-icon feat">
+                            <span>✨</span>
+                        </div>
+                        <div class="commit-details">
+                            <div class="commit-message">feat: 파일 업로드 기능 추가</div>
+                            <div class="commit-meta">
+                                <span class="commit-author">윤서준</span>
+                                <span class="commit-date">2025-01-12 10:15</span>
+                                <span class="commit-hash">#b4c0d9e</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="commit-item" data-type="refactor">
+                        <div class="commit-icon refactor">
+                            <span>♻️</span>
+                        </div>
+                        <div class="commit-details">
+                            <div class="commit-message">refactor: API 호출 최적화</div>
+                            <div class="commit-meta">
+                                <span class="commit-author">임하늘</span>
+                                <span class="commit-date">2025-01-11 17:05</span>
+                                <span class="commit-hash">#c5d1e0f</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="commit-item" data-type="docs">
+                        <div class="commit-icon docs">
+                            <span>📝</span>
+                        </div>
+                        <div class="commit-details">
+                            <div class="commit-message">docs: API 문서 작성</div>
+                            <div class="commit-meta">
+                                <span class="commit-author">송지우</span>
+                                <span class="commit-date">2025-01-11 14:30</span>
+                                <span class="commit-hash">#d6e2f1a</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="commit-item" data-type="fix">
+                        <div class="commit-icon fix">
+                            <span>🐛</span>
+                        </div>
+                        <div class="commit-details">
+                            <div class="commit-message">fix: 반응형 레이아웃 버그 수정</div>
+                            <div class="commit-meta">
+                                <span class="commit-author">한예원</span>
+                                <span class="commit-date">2025-01-10 16:45</span>
+                                <span class="commit-hash">#e7f3a2b</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="commit-item" data-type="feat">
+                        <div class="commit-icon feat">
+                            <span>✨</span>
+                        </div>
+                        <div class="commit-details">
+                            <div class="commit-message">feat: 검색 기능 개선</div>
+                            <div class="commit-meta">
+                                <span class="commit-author">배서연</span>
+                                <span class="commit-date">2025-01-10 11:20</span>
+                                <span class="commit-hash">#f8a4b3c</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/commits.js"></script>
 </body>
 </html>
